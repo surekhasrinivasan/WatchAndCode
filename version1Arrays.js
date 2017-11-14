@@ -31,5 +31,3 @@ console.log(todos);
 //deleting second and third item
 todos.splice(1, 2);
 console.log(todos);
-
-
