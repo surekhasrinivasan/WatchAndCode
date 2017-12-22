@@ -25,6 +25,10 @@ var todoList = {
 		this.todos[position].todoText = todoText;
 		this.displayTodos();
 	},
+	deleteTodo: function(position){
+        this.todos.splice(position, 1);
+        this.displayTodos();
+},
 	//todoList.toggleCompleted should change the completed property     
 	toggleCompleted: function(position) {
 		var todo = this.todos[position];
@@ -59,9 +63,6 @@ var handlers = {
 	displayTodos: function() {
 		todoList.displayTodos();
 	},
-	toggleAll: function() {
-		todoList.toggleAll();
-	},
 	// Working controls for .addTodo
 	addTodo: function() {
 		var addTodoTextInput = document.getElementById('addTodoTextInput');
@@ -73,7 +74,22 @@ var handlers = {
 		var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
 		var changeTodoTextInput = document.getElementById('changeTodoTextInput');
 		todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
-		changeTodoPositionInput.vaueAsNumber = '';
+		changeTodoPositionInput.value='';
 		changeTodoTextInput.value = '';
+	},
+	// Working controls for .deleteTodo
+    deleteTodo: function(){
+        var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+        todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+        deleteTodoPositionInput.value='';
+    },
+    // Working controls for .toggleCompleted
+    toggleCompleted: function(){
+        var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+        todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+        toggleCompletedPositionInput.value='';
+    },
+    toggleAll: function() {
+		todoList.toggleAll();
 	}
 };
